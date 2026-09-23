@@ -1,0 +1,37 @@
+{
+    "goal": "navigate toward the goal",
+    "strategy": "Prioritize safe navigation toward the goal. If the goal direction is known and unblocked, move in that direction. If not, use the fallback order to select the first unblocked direction. Stop only when all directions are blocked.",
+    "allowed_actions": [
+        "FORWARD",
+        "LEFT",
+        "RIGHT",
+        "STOP"
+    ],
+    "decisions": [
+        "stop_if_all_blocked",
+        "prefer_safe_goal",
+        "first_safe_fallback"
+    ],
+    "fallback_order": [
+        "FORWARD",
+        "LEFT",
+        "RIGHT"
+    ],
+    "stop_condition": "all_directions_blocked",
+    "interface": {
+        "function_name": "decide_action",
+        "parameters": [
+            "front_blocked",
+            "left_blocked",
+            "right_blocked",
+            "goal_direction"
+        ],
+        "goal_values": [
+            "ahead",
+            "left",
+            "right",
+            null
+        ],
+        "invalid_input": "raise ValueError"
+    }
+}
